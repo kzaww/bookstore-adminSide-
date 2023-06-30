@@ -1,0 +1,390 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+:root {
+    --lightshadow: rgba(151, 146, 146, 0.952);
+    --sidebar: rgb(103, 83, 177);
+    --sidebarHover: rgb(85, 68, 146);
+}
+
+.bio::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+    width: 3px;
+}
+
+.bio::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track {
+    background-color: var(--lightshadow);
+    border-radius: 5px;
+}
+
+.bio::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+#autocomplete::-webkit-scrollbar {
+    width: 3px;
+}
+
+#autocomplete::-webkit-scrollbar-track {
+    background-color: var(--lightshadow);
+    border-radius: 5px;
+}
+
+#autocomplete::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    background-color: var(--sidebar);
+    overflow-y: auto;
+}
+
+.sidebar_header {
+    width: 100%;
+    height: 70px;
+    color: white;
+    border-bottom: dashed 1px black;
+}
+
+.logo_content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background-color: #000000;
+    margin: 10% 0 0 10%;
+    border-radius: 8px;
+    padding: 1px 0;
+}
+
+.logo,
+.logo_name {
+    text-align: center;
+    user-select: none;
+    font-size: 0.8rem;
+}
+
+.logo {
+    transform: translateY(2px);
+}
+
+.sidebar_body {
+    width: 100%;
+    height: calc(100% - 100px);
+    position: relative;
+}
+
+.sidebar_body>ul {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.sidebar_body>ul>li {
+    width: 100%;
+    min-height: 50px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    line-height: 50px;
+    cursor: pointer;
+    position: relative;
+    font-size: 0.8rem;
+    z-index: 100;
+}
+
+.sidebar_body>ul>li:hover,
+.sidebar_body>ul>li.active,
+.sidebar_body>ul>li>ul>li.sub_active {
+    background-color: var(--sidebarHover);
+    border-left: solid 2px black;
+}
+
+body.child .drop.active {
+    background-color: var(--sidebar) !important;
+    border: none;
+}
+
+.sidebar_body>ul>li:last-child:hover {
+    background-color: rgb(211, 122, 122);
+    border-left: solid 1px red;
+}
+
+.sidebar_body>ul>li>a,
+.sidebar_body>ul>li>ul>li>a,
+#logout {
+    color: white;
+    display: flex;
+    text-decoration: none;
+    z-index: 99;
+}
+
+.sidebar_body>ul>li>a>i,
+#logout>i {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.sidebar_body>ul>li>i {
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.sidebar_body>ul>li>a>span,
+#logout>span {
+    height: 50px;
+    line-height: 50px;
+}
+
+.sidebar_body .acc_drop {
+    transition: transform 0.5s ease;
+    user-select: none;
+}
+
+.sidebar_body .acc_drop.rotate {
+    transform: rotate(180deg);
+}
+
+body.child .drop:hover {
+    background-color: inherit;
+    border-left: none;
+}
+
+.show {
+    position: static;
+    display: none;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+
+.show.visible {
+    display: block;
+}
+
+.show li {
+    width: 90%;
+    height: 30px;
+    line-height: 30px !important;
+    margin-bottom: 5px;
+    padding-left: 50px;
+}
+
+.show li:hover {
+    background-color: var(--sidebarHover);
+    border-left: 2px solid black;
+}
+
+.show>li>a {
+    width: 100%;
+    white-space: nowrap;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar_body>.account {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    border-top: dashed 1px black;
+    bottom: 0;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    user-select: none;
+    z-index: 0;
+}
+
+.sidebar_body>.account img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.content {
+    width: calc(100%-200px);
+    margin-left: 200px;
+    background-color: white;
+}
+
+.wrapper {
+    padding: 5px 10px;
+}
+
+
+/* overall */
+
+.title1 {
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.searchbox1 {
+    width: 300px;
+    margin: 5px 100px 0 0;
+}
+
+.searchbox1 input {
+    width: 100%;
+    height: 30px;
+    border: solid rgb(220, 222, 223) 1px;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 5px;
+}
+
+.searchbox1 input::placeholder {
+    color: rgb(197, 197, 197);
+    user-select: none;
+}
+
+.searchbox1 input:focus {
+    outline: solid 1px black;
+}
+
+
+/* author */
+
+.head {
+    background-color: white !important;
+}
+
+.list_item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    height: 100px;
+    background-color: rgb(199, 197, 197, 0.5);
+}
+
+.author_btn,
+.list_item>span {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.bio {
+    hyphens: auto;
+}
+
+#photo_click,
+#up_photo_click {
+    cursor: pointer;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-left: 14px;
+    text-decoration: underline
+}
+
+#autocomplete {
+    position: fixed;
+    width: 300px;
+    max-width: 400px;
+    max-height: 100px;
+    overflow-y: auto;
+    background-color: #eeeeee;
+}
+
+#autocomplete li {
+    cursor: pointer;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.auto_list:hover {
+    background-color: white;
+}
+
+.auto_list.active {
+    background-color: white;
+}
+
+
+/* book */
+
+#gen_info,
+#author_info,
+#u_gen_info,
+#u_author_info {
+    display: none;
+}
+
+#gen_info.show,
+#author_info.show,
+#u_gen_info.show,
+#u_author_info.show {
+    display: block;
+}
+
+#gen_info::-webkit-scrollbar,
+#author_info::-webkit-scrollbar {
+    width: 5px;
+}
+
+#gen_info::-webkit-scrollbar-track,
+#author_info::-webkit-scrollbar-track {
+    background-color: inherit;
+}
+
+#gen_info::-webkit-scrollbar-thumb,
+#author_info::-webkit-scrollbar-thumb {
+    background-color: var(--lightshadow);
+}
+
+#search_gen,
+#search_author,
+#u_search_author,
+#u_search_gen {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: white;
+    border-bottom: 1px solid;
+    padding-left: 14px;
+}
+
+.gen_items>span,
+.author_items>span,
+.u_gen_items>span,
+.u_author_items>span {
+    height: 30px;
+    line-height: 15px;
+    cursor: pointer
+}
+
+
+/* search icon */
+
+#search_ic {
+    position: absolute;
+    transform: translate(-27px, 4px);
+    color: rgb(0, 0, 0, 0.2);
+    cursor: pointer;
+    pointer-events: none
+}
+
+
+/* change password icon */
+
+.seeic {
+    position: absolute;
+    right: 5px;
+    top: 20%;
+    cursor: pointer;
+}
